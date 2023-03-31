@@ -195,6 +195,7 @@ class _SearchPageState extends State<SearchPage> {
                   : SingleChildScrollView(
                       physics: const NeverScrollableScrollPhysics(),
                       child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Gap(25),
