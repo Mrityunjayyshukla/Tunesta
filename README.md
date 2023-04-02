@@ -1,6 +1,8 @@
-# tunesta
+# Tunesta
 
 A new Flutter project.
+Tunesta is an Online Music Streaming Platform on which users can listen to songs they like and
+feel the vibe....
 
 ## Getting Started
 
