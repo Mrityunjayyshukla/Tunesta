@@ -9,8 +9,8 @@ class ChartsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.colorShade2,
-      body: CustomScrollView(slivers: [
+      backgroundColor: CustomColors.colorShade0,
+      body: CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
         SliverAppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -18,7 +18,7 @@ class ChartsPage extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          backgroundColor: CustomColors.colorShade2,
+          backgroundColor: CustomColors.colorShade0,
           elevation: 0,
           expandedHeight: 150,
           floating: true,
@@ -35,78 +35,70 @@ class ChartsPage extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(
-          child: Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-              colors: [CustomColors.colorShade2, Colors.black],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            )),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Gap(40),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Gap(40),
 
-                  // Top Trending Musics
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Text(
-                      "Top Music",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                // Top Trending Musics
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Top Music",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Gap(25),
-                  GridB(
-                      gridMusicName: "Music Name",
-                      gridArtistName: "Artist Name",
-                      gridMusicIcon: CustomImages.imageDefault,
-                      gridNumber: 12,
-                      gridInRow: 3),
-                  Gap(40),
+                ),
+                Gap(25),
+                GridB(
+                    gridMusicName: "Music Name",
+                    gridArtistName: "Artist Name",
+                    gridMusicIcon: CustomImages.imageDefault,
+                    gridNumber: 12,
+                    gridInRow: 3),
+                Gap(40),
 
-                  // Top Trending Artists
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Text(
-                      "Top Artists",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                // Top Trending Artists
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Top Artists",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Gap(25),
-                  ArtistsList(
-                    artistImage: CustomImages.imageDefault,
-                    artistName: "Artist Name",
-                    itemLength: 10,
-                  ),
-                  Gap(40),
+                ),
+                Gap(25),
+                ArtistsList(
+                  artistImage: CustomImages.imageDefault,
+                  artistName: "Artist Name",
+                  itemLength: 10,
+                ),
+                Gap(40),
 
-                  // Trending Original Albums
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Text(
-                      "Most Played Albums",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                // Trending Original Albums
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Most Played Albums",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Gap(25),
-                  AlbumsCard(
-                    albumImage: CustomImages.imageDefault,
-                    playlistName: "Album Name",
-                    playlistCreator: "ArtistName",
-                    itemLength: 6,
-                  ),
-                  Gap(50),
-                ]),
-          ),
+                ),
+                Gap(25),
+                AlbumsCard(
+                  albumImage: CustomImages.imageDefault,
+                  playlistName: "Album Name",
+                  playlistCreator: "ArtistName",
+                  itemLength: 6,
+                ),
+                Gap(50),
+              ]),
         ),
       ]),
     );

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:tunesta/models/album_and_artist_page.dart';
+import 'package:tunesta/screens/others/album_and_artist_page.dart';
 import 'package:tunesta/models/search_widgets.dart';
 import 'package:tunesta/screens/others/notifications.dart';
 import 'package:tunesta/utils/utilities.dart';

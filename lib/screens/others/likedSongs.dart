@@ -17,9 +17,10 @@ class _LikedSongsState extends State<LikedSongs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.colorShade2,
+      backgroundColor: CustomColors.colorShade0,
       //floatingActionButton: const PlayerButton(),
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           // back button to go back
           SliverAppBar(
@@ -30,7 +31,7 @@ class _LikedSongsState extends State<LikedSongs> {
               },
             ),
             centerTitle: true,
-            backgroundColor: CustomColors.colorShade2,
+            backgroundColor: CustomColors.colorShade0,
             elevation: 0,
             expandedHeight: 320,
             floating: true,
@@ -125,74 +126,55 @@ class _LikedSongsState extends State<LikedSongs> {
           //sliverbody
 
           // Shows the list of songs in the User Liked
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                colors: [
-                  CustomColors.colorShade2,
-                  CustomColors.colorShade1,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
-              child: const TopPlayed(
-                musicName: "Music Name",
-                artistName: "Artist Name",
-                trackImage: CustomImages.imageDefault,
-                itemCount: 8,
-              ),
+          const SliverToBoxAdapter(
+            child: TopPlayed(
+              musicName: "Music Name",
+              artistName: "Artist Name",
+              trackImage: CustomImages.imageDefault,
+              itemCount: 8,
             ),
           ),
 
           // Shows the created Playlists
           SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                colors: [CustomColors.colorShade1, Colors.black],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
-              child: Column(children: const [
-                Gap(40),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Text(
-                    "Created Playlists",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+            child: Column(children: const [
+              Gap(40),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  "Created Playlists",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Gap(25),
-                AlbumsCard(
-                    albumImage: CustomImages.imageDefault,
-                    playlistName: "Playlist Name",
-                    playlistCreator: "Playlist Creator",
-                    itemLength: 8),
-                Gap(40),
+              ),
+              Gap(25),
+              AlbumsCard(
+                  albumImage: CustomImages.imageDefault,
+                  playlistName: "Playlist Name",
+                  playlistCreator: "Playlist Creator",
+                  itemLength: 8),
+              Gap(40),
 
-                // Followed Artists List
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Text(
-                    "Artists you follow",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+              // Followed Artists List
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  "Artists you follow",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Gap(25),
-                ArtistsList(
-                    artistImage: CustomImages.imageDefault,
-                    artistName: "Artist Name",
-                    itemLength: 6),
-                Gap(40),
-              ]),
-            ),
+              ),
+              Gap(25),
+              ArtistsList(
+                  artistImage: CustomImages.imageDefault,
+                  artistName: "Artist Name",
+                  itemLength: 6),
+              Gap(40),
+            ]),
           )
         ],
       ),

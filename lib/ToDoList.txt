@@ -7,3 +7,5 @@ Listening History (With a clear history button)
 Toggle Should stay how it has been set 
 Fix Up search Items
 Setting the backgroundColor to a Single Color
+Empty text if no element and element if there are
+Artist Image in the Artist Page (Done)
