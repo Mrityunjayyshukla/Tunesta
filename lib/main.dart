@@ -4,9 +4,7 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:tunesta/models/custom_widgets.dart';
-import 'package:tunesta/models/loginModels.dart';
+import 'package:tunesta/models/login_models.dart';
 import 'package:tunesta/screens/account_page.dart';
 import 'package:tunesta/screens/home_screen.dart';
 import 'package:tunesta/screens/search_page.dart';
@@ -48,14 +46,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.colorShade2,
+      backgroundColor: CustomColors.colorShade0,
       body: tabs[_currentindex],
-      floatingActionButton: const PlayerButton(),
+      //floatingActionButton: ,
       bottomNavigationBar: CurvedNavigationBar(
-        color: CustomColors.colorShade1,
+        color: CustomColors.colorShade2,
         index: _currentindex,
         animationDuration: const Duration(milliseconds: 300),
-        backgroundColor: Colors.black,
+        backgroundColor: CustomColors.colorShade0,
         items: const [
           CurvedNavigationBarItem(
             child: Icon(Icons.home),
@@ -95,7 +93,6 @@ class _LogInPageState extends State<LogInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: CustomColors.colorShade1,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -159,7 +156,8 @@ class _LogInPageState extends State<LogInPage> {
                     },
                     child: const Text(
                       "Sign In",
-                      style: TextStyle(color: CustomColors.colorShade4),
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 216, 97, 255)),
                     ))
               ],
             )
@@ -170,44 +168,9 @@ class _LogInPageState extends State<LogInPage> {
   }
 }
 
-class TabBarViewer extends StatefulWidget {
-  const TabBarViewer({super.key});
-
-  @override
-  State<TabBarViewer> createState() => _TabBarViewerState();
-}
-
-class _TabBarViewerState extends State<TabBarViewer> {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Column(children: const [
-          TabBar(
-            indicatorColor: Color(0xFF480975),
-            tabs: [
-              Tab(text: "Lyrics"),
-              Tab(text: "Queue"),
-            ],
-          ),
-          SizedBox(
-              height: 400,
-              child: TabBarView(children: [
-                Center(child: Text("Song Lyrics will appear here")),
-                NowPlayingQueue(),
-              ]))
-        ]));
-  }
-}
-
-class SignInPage extends StatefulWidget {
+class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
-  @override
-  State<SignInPage> createState() => _SignInPageState();
-}
-
-class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -244,27 +207,47 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   const Gap(60),
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: "E-Mail",
-                      suffixIconColor: Colors.white,
-                      //suffixIcon: Icon(Icons.cancel_outlined),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: CustomColors.colorShade4,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "E-Mail",
+                        suffixIconColor: Colors.white,
+                        //suffixIcon: Icon(Icons.cancel_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      keyboardAppearance: Brightness.dark,
+                      style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    keyboardAppearance: Brightness.dark,
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const Gap(25),
-                  const TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      suffixIconColor: Colors.white,
-                      //suffixIcon: Icon(Icons.cancel_outlined),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: CustomColors.colorShade4,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Password",
+                        suffixIconColor: Colors.white,
+                        //suffixIcon: Icon(Icons.cancel_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      keyboardAppearance: Brightness.dark,
+                      style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    keyboardAppearance: Brightness.dark,
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const Gap(40),
                   GestureDetector(
@@ -342,38 +325,68 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   const Gap(60),
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: "Full Name",
-                      suffixIconColor: Colors.white,
-                      //suffixIcon: Icon(Icons.cancel_outlined),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: CustomColors.colorShade4,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Full Name",
+                        suffixIconColor: Colors.white,
+                        //suffixIcon: Icon(Icons.cancel_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      keyboardAppearance: Brightness.dark,
+                      style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    keyboardAppearance: Brightness.dark,
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const Gap(25),
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: "E-Mail",
-                      suffixIconColor: Colors.white,
-                      //suffixIcon: Icon(Icons.cancel_outlined),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: CustomColors.colorShade4,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "E-Mail",
+                        suffixIconColor: Colors.white,
+                        //suffixIcon: Icon(Icons.cancel_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      keyboardAppearance: Brightness.dark,
+                      style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    keyboardAppearance: Brightness.dark,
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const Gap(25),
-                  const TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      suffixIconColor: Colors.white,
-                      //suffixIcon: Icon(Icons.cancel_outlined),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: CustomColors.colorShade4,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Password",
+                        suffixIconColor: Colors.white,
+                        //suffixIcon: Icon(Icons.cancel_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      keyboardAppearance: Brightness.dark,
+                      style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    keyboardAppearance: Brightness.dark,
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const Gap(40),
                   GestureDetector(
@@ -408,171 +421,3 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
-
-class PlayerButton extends StatefulWidget {
-  const PlayerButton({super.key});
-
-  @override
-  State<PlayerButton> createState() => PlayerButtonState();
-}
-
-class PlayerButtonState extends State<PlayerButton> {
-  @override
-  Widget build(BuildContext context) {
-    bool isplaying = false;
-    return GestureDetector(
-      onLongPress: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AccountPage()));
-      },
-      onTap: () {
-        showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: CustomColors.colorShade2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
-            ),
-            builder: (context) => DraggableScrollableSheet(
-                expand: false,
-                initialChildSize: 0.6,
-                minChildSize: 0.32,
-                maxChildSize: 0.85,
-                builder: (context, scrollController) => SingleChildScrollView(
-                      controller: scrollController,
-                      physics: const BouncingScrollPhysics(),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          children: [
-                            const Icon(Icons.expand_less_rounded),
-                            const Gap(32),
-                            CircularPercentIndicator(
-                              radius: 100,
-                              lineWidth: 10,
-                              percent: 0.7,
-                              progressColor: Colors.black,
-                              backgroundColor: CustomColors.colorShade3,
-                              circularStrokeCap: CircularStrokeCap.round,
-                              center: ClipRRect(
-                                borderRadius: BorderRadius.circular(80),
-                                child: const Image(
-                                  image: AssetImage(CustomImages.imageDefault),
-                                  height: 160,
-                                  width: 160,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            const Gap(25),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: const [
-                                      Text(
-                                        "Music Name",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Gap(10),
-                                      Text(
-                                        "Artist Name",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const Icon(
-                                    Icons.more_horiz,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Gap(32),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.shuffle),
-                                const Gap(40),
-                                const PlayerButtonIcons(
-                                  icon: Icons.skip_previous_outlined,
-                                ),
-                                const Gap(25),
-                                GestureDetector(
-                                  onTap: () {
-                                    if (isplaying == true) {
-                                      setState(() {
-                                        isplaying == false;
-                                      });
-                                    } else {
-                                      isplaying = true;
-                                    }
-                                  },
-                                  child: PlayerButtonIcons(
-                                    icon: isplaying
-                                        ? Icons.pause_outlined
-                                        : Icons.play_arrow_outlined,
-                                  ),
-                                ),
-                                const Gap(25),
-                                const PlayerButtonIcons(
-                                  icon: Icons.skip_next_outlined,
-                                ),
-                                const Gap(40),
-                                const Icon(Icons.repeat),
-                              ],
-                            ),
-                            const Gap(25),
-                            const TabBarViewer(),
-                          ],
-                        ),
-                      ),
-                    )));
-      },
-      child: Container(
-        decoration: BoxDecoration(
-            color: const Color(0xFF230438),
-            borderRadius: BorderRadius.circular(40)),
-        padding: const EdgeInsets.all(18),
-        child: const Icon(
-          Icons.music_note,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
-class PlayerButtonIcons extends StatelessWidget {
-  final icon;
-  const PlayerButtonIcons({super.key, required this.icon});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          border: Border.all(width: 2, color: Colors.white)),
-      child: Icon(icon),
-    );
-  }
-}
-/*
-Shade 1- 0xFF290542
-Shade 2- 0xFF230438
-Shade 3- 0xFF480975
-Shade 4- 0xFF0CABA8
-Shade 5- 0xFF0FC2C0
-*/

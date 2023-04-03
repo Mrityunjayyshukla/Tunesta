@@ -24,7 +24,7 @@ class _BlocksState extends State<Blocks> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: CustomColors.colorShade3,
+        color: CustomColors.colorShade2,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +65,6 @@ class _GenreTabsState extends State<GenreTabs> {
       child: GridView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: 12,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -78,7 +77,7 @@ class _GenreTabsState extends State<GenreTabs> {
               padding: const EdgeInsets.all(8),
               //width: 120,
               decoration: BoxDecoration(
-                  color: CustomColors.colorShade3,
+                  color: CustomColors.colorShade2,
                   //borderRadius: BorderRadius.circular(20),
                   border: Border(
                       left:

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:tunesta/main.dart';
 import 'package:tunesta/models/custom_widgets.dart';
 import 'package:tunesta/utils/utilities.dart';
 
@@ -24,7 +23,7 @@ class _AlbumPageState extends State<AlbumPage> {
   Widget build(BuildContext context) {
     bool isPlaying = false;
     return Scaffold(
-      floatingActionButton: const PlayerButton(),
+      //floatingActionButton: const PlayerButton(),
       appBar: AppBar(
         backgroundColor: CustomColors.colorShade2,
         title: const Text("Playlist Name"),
@@ -39,7 +38,6 @@ class _AlbumPageState extends State<AlbumPage> {
           end: Alignment.bottomCenter,
         )),
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 24),
           child: Column(
             children: [
@@ -195,7 +193,7 @@ class _ArtistWidgetState extends State<ArtistWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const PlayerButton(),
+      //floatingActionButton: const PlayerButton(),
       appBar: AppBar(
         backgroundColor: CustomColors.colorShade2,
         title: const Text("Artist Name"),
@@ -210,7 +208,6 @@ class _ArtistWidgetState extends State<ArtistWidget> {
           end: Alignment.bottomCenter,
         )),
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

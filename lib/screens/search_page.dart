@@ -4,23 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tunesta/models/custom_widgets.dart';
 import 'package:tunesta/models/search_widgets.dart';
-import 'package:tunesta/screens/other_screens.dart';
+import 'package:tunesta/screens/others/charts.dart';
+import 'package:tunesta/screens/others/genre.dart';
+import 'package:tunesta/screens/others/new_releases.dart';
 import 'package:tunesta/utils/utilities.dart';
 
-class SearchPageVal extends StatefulWidget {
+class SearchPageVal extends StatelessWidget {
   const SearchPageVal({super.key});
 
-  @override
-  State<SearchPageVal> createState() => _SearchPageValState();
-}
-
-class _SearchPageValState extends State<SearchPageVal> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: CustomColors.colorShade0,
+
+      // Appbar contains search bar
+      // When clicked on search bar, it will take to search option
+      // and the songs, artists and albums can be searched
       appBar: AppBar(
-        backgroundColor: CustomColors.colorShade2,
+        backgroundColor: CustomColors.colorShade0,
         title: GestureDetector(
           onTap: () {
             Navigator.push(context,
@@ -48,136 +50,143 @@ class _SearchPageValState extends State<SearchPageVal> {
             ]),
           ),
         ),
-        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
 
       //body
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [CustomColors.colorShade2, Colors.black],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Gap(40),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const NewReleasesPage()));
-                      },
-                      child: const Blocks(
-                          blockIcon: Icons.playlist_add,
-                          blockText: "New Releases"),
-                    ),
-                    GestureDetector(
-                      child: const Blocks(
-                          blockIcon: Icons.mood, blockText: "Genres"),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const GenreScreen()));
-                      },
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ChartsPage()));
-                      },
-                      child: const Blocks(
-                          blockIcon: Icons.show_chart, blockText: "Charts"),
-                    ),
-                  ],
-                ),
-              ),
-              const Gap(40),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "New Albums & Singles",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Gap(25),
-              const AlbumsCard(
-                albumImage: CustomImages.imageDefault,
-                playlistName: "Playlist Name",
-                playlistCreator: "Playlist Creator",
-                itemLength: 5,
-              ),
-              const Gap(40),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Moods & Genres",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Gap(25),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const GenrePages()));
-                },
-                child: const GenreTabs(
-                  tileText: "Hello World",
-                  tileBorderColor: Colors.yellow,
-                ),
-              ),
-              const Gap(40),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  "Trending",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Gap(40),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // New Releases
+                  // Shows newly released songs and albums
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewReleasesPage()));
+                    },
+                    child: const Blocks(
+                        blockIcon: Icons.playlist_add,
+                        blockText: "New Releases"),
                   ),
+
+                  // Genres
+                  // User can explore various music genres
+                  GestureDetector(
+                    child: const Blocks(
+                        blockIcon: Icons.mood, blockText: "Genres"),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GenreScreen()));
+                    },
+                  ),
+
+                  // Charts
+                  // Shows top trending songs, artists and albums
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ChartsPage()));
+                    },
+                    child: const Blocks(
+                        blockIcon: Icons.show_chart, blockText: "Charts"),
+                  ),
+                ],
+              ),
+            ),
+            const Gap(40),
+
+            // New Albums And Singles
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "New Albums & Singles",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Gap(25),
+            const AlbumsCard(
+              albumImage: CustomImages.imageDefault,
+              playlistName: "Playlist Name",
+              playlistCreator: "Playlist Creator",
+              itemLength: 5,
+            ),
+            const Gap(40),
+
+            // Moods and Genres
+            // so that the user can explore various
+            // categories of music
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Moods & Genres",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Gap(25),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GenrePages()));
+              },
+              child: const GenreTabs(
+                tileText: "Hello World",
+                tileBorderColor: Colors.yellow,
+              ),
+            ),
+            const Gap(40),
+
+            // List Of Trending Songs on the App
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                "Trending",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
                 ),
               ),
-              const Gap(25),
-              const GridB(
-                  gridMusicName: "Music Name",
-                  gridArtistName: "Artist Name",
-                  gridMusicIcon: CustomImages.imageDefault,
-                  gridNumber: 12,
-                  gridInRow: 3),
-              const Gap(40),
-            ],
-          ),
+            ),
+            const Gap(25),
+            const GridB(
+                gridMusicName: "Music Name",
+                gridArtistName: "Artist Name",
+                gridMusicIcon: CustomImages.imageDefault,
+                gridNumber: 12,
+                gridInRow: 3),
+            const Gap(40),
+          ],
         ),
       ),
     );

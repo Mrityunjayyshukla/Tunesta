@@ -1,0 +1,9 @@
+Creating Categories in Music, Artists and Albums/Playlists in Home screen
+Creating a pop up window when "More" Icon is pressed
+A Now Playing Section
+Changes in NotficationPage
+Manage Account Page
+Listening History (With a clear history button)
+Toggle Should stay how it has been set 
+Fix Up search Items
+Setting the backgroundColor to a Single Color

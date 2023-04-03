@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tunesta/models/album_and_artist_page.dart';
-import 'package:tunesta/screens/other_screens.dart';
 import 'package:tunesta/models/search_widgets.dart';
+import 'package:tunesta/screens/others/notifications.dart';
 import 'package:tunesta/utils/utilities.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-      color: CustomColors.colorShade2,
+      color: CustomColors.colorShade0,
       //Colors.amber.withOpacity((scrollOffset / 100).clamp(0, 1).toDouble()),
       child: SafeArea(
         child: Column(
@@ -119,9 +119,9 @@ class _ArtistsListState extends State<ArtistsList> {
     return SizedBox(
       height: 160,
       child: ListView.separated(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 8),
           scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () {
@@ -181,9 +181,9 @@ class _GridBState extends State<GridB> {
     return SizedBox(
       height: 66.667 * widget.gridInRow,
       child: GridView.builder(
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 12),
         scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: widget.gridInRow,
@@ -312,6 +312,7 @@ class _AlbumsCardState extends State<AlbumsCard> {
   }
 }
 
+//
 class AccountsButton extends StatelessWidget {
   final optionIcon;
   final optionText;
@@ -327,9 +328,6 @@ class AccountsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18),
-      /*decoration: BoxDecoration(
-          border: Border.all(width: 2, color: Colors.white),
-          borderRadius: BorderRadius.circular(20)),*/
       child: Row(children: [
         Icon(optionIcon),
         const Gap(20),
@@ -391,76 +389,6 @@ class AccountPageDown extends StatelessWidget {
           ],
         )
       ]),
-    );
-  }
-}
-
-class NowPlayingQueue extends StatefulWidget {
-  const NowPlayingQueue({super.key});
-
-  @override
-  State<NowPlayingQueue> createState() => _NowPlayingQueueState();
-}
-
-class _NowPlayingQueueState extends State<NowPlayingQueue> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 24),
-          scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: CustomColors.colorShade2,
-              ),
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: const Image(
-                            image: AssetImage(
-                              CustomImages.imageDefault,
-                            ),
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          )),
-                      const Gap(12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Music Name",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 15),
-                          ),
-                          Text(
-                            "Artist Name",
-                            style: TextStyle(
-                                color: CustomColors.colorShade4, fontSize: 12),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  const Icon(Icons.more_vert)
-                ],
-              ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(
-                height: 8,
-              ),
-          itemCount: 10),
     );
   }
 }
