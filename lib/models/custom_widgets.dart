@@ -275,7 +275,7 @@ class _AlbumsCardState extends State<AlbumsCard> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AlbumPage(
+                        builder: (context) => const PlaylistSongs(
                               playlistItemNo: 15,
                               playlistImage: CustomImages.imageDefault,
                             )));

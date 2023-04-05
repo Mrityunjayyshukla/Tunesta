@@ -50,7 +50,7 @@ class NewReleasesPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AlbumPage(
+                              builder: (context) => const PlaylistSongs(
                                   playlistItemNo: 7,
                                   playlistImage: CustomImages.imageDefault)));
                     },
