@@ -87,8 +87,9 @@ class _AlbumPageState extends State<AlbumPage> {
                 const Icon(Icons.more_vert),
               ],
             ),
-            //const Gap(40),
-
+            const Gap(40),
+            const PlaylistSongs(
+                playlistImage: CustomImages.imageDefault, playlistItemNo: 8),
             const Gap(25),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -206,6 +207,10 @@ class _ArtistWidgetState extends State<ArtistWidget> {
   }
 
   bool isfollowing = false;
+  bool isShufflePlay = false;
+  String loremIpsum =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\nsed do eiusmod tempor incididunt ut labore et dolore\nmagna aliqua. Ut enim ad minim veniam, quis nostrud\nexercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate\nvelit esse cillum dolore eu fugiat nulla pariatur. Excepteur\nsint occaecat cupidatat non proident, sunt in culpa qui\nofficia deserunt mollit anim id est laborum.\n";
+
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -282,8 +287,45 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                           buttonText: isfollowing ? "Following" : "Follow"),
                     ),
                     const Gap(20),
-                    const ButtonIconText(
-                        buttonIcon: Icons.shuffle, buttonText: "Shuffle Play"),
+                    GestureDetector(
+                      onTap: () {
+                        if (isShufflePlay == true) {
+                          setState(() {
+                            isShufflePlay = false;
+                          });
+                        } else {
+                          setState(() {
+                            isShufflePlay = true;
+                          });
+                        }
+                      },
+                      child: isShufflePlay
+                          ? Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: CustomColors.colorShade3,
+                                  border: Border.all(
+                                      width: 1, color: Colors.white)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                              child: Row(
+                                children: const [
+                                  Icon(Icons.shuffle),
+                                  Gap(12),
+                                  Text(
+                                    "Shuffle Play",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const ButtonIconText(
+                              buttonIcon: Icons.shuffle,
+                              buttonText: "Shuffle Play"),
+                    ),
                   ],
                 ),
                 const Gap(40),
@@ -313,7 +355,7 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                 const Gap(20),
                 const GridB(
                     gridMusicName: "Music Name",
-                    gridArtistName: "Artust Name",
+                    gridArtistName: "Artist Name",
                     gridMusicIcon: CustomImages.imageDefault,
                     gridNumber: 6,
                     gridInRow: 3),
@@ -416,11 +458,14 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                   ),
                 ),
                 const Gap(20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Text("Lorem Ipsum"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  child: Text(
+                    loremIpsum,
+                    textAlign: TextAlign.left,
+                  ),
                 ),
-                const Gap(100),
+                const Gap(80),
               ],
             ),
           ),
@@ -488,140 +533,6 @@ class ButtonIconText extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ScrollAppBar extends StatefulWidget {
-  const ScrollAppBar({super.key});
-
-  @override
-  State<ScrollAppBar> createState() => _ScrollAppBarState();
-}
-
-class _ScrollAppBarState extends State<ScrollAppBar> {
-  late ScrollController _scrollController;
-  double _scrollControllerOffset = 0.0;
-
-  _scrollListener() {
-    setState(() {
-      _scrollControllerOffset = _scrollController.offset;
-    });
-  }
-
-  @override
-  void initState() {
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffff9398),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(CustomImages.imageDefault),
-                fit: BoxFit.cover)),
-        child: Stack(
-          children: [
-            CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: const Center(
-                      child: Text(
-                        "Hello World",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 60,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            PreferredSize(
-                preferredSize: Size(MediaQuery.of(context).size.width, 20.0),
-                child: FadeAppBar(scrollOffset: _scrollControllerOffset))
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class FadeAppBar extends StatelessWidget {
-  final double scrollOffset;
-  const FadeAppBar({Key? key, required this.scrollOffset}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-        top: false,
-        child: Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-            horizontal: 24,
-          ),
-          color: Colors.white
-              .withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
-          child: const SafeArea(child: SearchInput()),
-        ));
-  }
-}
-
-class SearchInput extends StatelessWidget {
-  const SearchInput({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-            offset: const Offset(12, 26),
-            blurRadius: 50,
-            spreadRadius: 0,
-            color: Colors.grey.withOpacity(.1))
-      ]),
-      child: TextField(
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 14),
-        decoration: InputDecoration(
-            prefixIcon: const Icon(
-              Icons.search,
-              size: 20,
-              color: Color(0xffff9398),
-            ),
-            filled: true,
-            fillColor: Colors.white,
-            hintText: "Where are you going",
-            hintStyle: TextStyle(color: Colors.black.withOpacity(.75)),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 1.0),
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-            )),
-        onChanged: (value) {},
       ),
     );
   }

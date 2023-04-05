@@ -272,13 +272,8 @@ class _AlbumsCardState extends State<AlbumsCard> {
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PlaylistSongs(
-                              playlistItemNo: 15,
-                              playlistImage: CustomImages.imageDefault,
-                            )));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AlbumPage()));
               },
               child: Column(
                 children: [
