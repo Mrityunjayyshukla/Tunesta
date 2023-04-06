@@ -136,7 +136,7 @@ class _LogInPageState extends State<LogInPage> {
                         builder: (context) => const SignUpPage()));
               },
               child: const TestWidget(
-                buttonColor: Color.fromARGB(255, 221, 77, 77),
+                buttonColor: CustomColors.colorShade3,
                 textColor: Colors.white,
                 titleIcon: Icons.email,
                 titleText: "Sign Up From E-Mail",
