@@ -387,3 +387,17 @@ class AccountPageDown extends StatelessWidget {
     );
   }
 }
+
+class MusicOptions extends StatefulWidget {
+  const MusicOptions({super.key});
+
+  @override
+  State<MusicOptions> createState() => _MusicOptionsState();
+}
+
+class _MusicOptionsState extends State<MusicOptions> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}

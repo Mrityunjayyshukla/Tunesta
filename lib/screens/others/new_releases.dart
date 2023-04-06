@@ -50,9 +50,7 @@ class NewReleasesPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PlaylistSongs(
-                                  playlistItemNo: 7,
-                                  playlistImage: CustomImages.imageDefault)));
+                              builder: (context) => const AlbumPage()));
                     },
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
