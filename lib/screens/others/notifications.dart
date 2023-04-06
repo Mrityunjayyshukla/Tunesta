@@ -37,6 +37,7 @@ class NotficationPage extends StatelessWidget {
               musicImage: CustomImages.imageDefault,
               artistName: "Artist Name",
             ),
+            Gap(20),
           ],
         ),
       ),

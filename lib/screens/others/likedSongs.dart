@@ -137,44 +137,46 @@ class _LikedSongsState extends State<LikedSongs> {
 
           // Shows the created Playlists
           SliverToBoxAdapter(
-            child: Column(children: const [
-              Gap(40),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  "Created Playlists",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Gap(40),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      "Created Playlists",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Gap(25),
-              AlbumsCard(
-                  albumImage: CustomImages.imageDefault,
-                  playlistName: "Playlist Name",
-                  playlistCreator: "Playlist Creator",
-                  itemLength: 8),
-              Gap(40),
+                  Gap(25),
+                  AlbumsCard(
+                      albumImage: CustomImages.imageDefault,
+                      playlistName: "Playlist Name",
+                      playlistCreator: "Playlist Creator",
+                      itemLength: 8),
+                  Gap(40),
 
-              // Followed Artists List
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  "Artists you follow",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                  // Followed Artists List
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      "Artists you follow",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Gap(25),
-              ArtistsList(
-                  artistImage: CustomImages.imageDefault,
-                  artistName: "Artist Name",
-                  itemLength: 6),
-              Gap(40),
-            ]),
+                  Gap(25),
+                  ArtistsList(
+                      artistImage: CustomImages.imageDefault,
+                      artistName: "Artist Name",
+                      itemLength: 6),
+                  Gap(40),
+                ]),
           )
         ],
       ),

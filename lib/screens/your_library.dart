@@ -115,6 +115,26 @@ class YourLibrary extends StatelessWidget {
                   itemLength: 8),
               const Gap(40),
 
+              // Liked Albums
+              // Shows the Albums user liked
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  "Liked Playlists",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Gap(25),
+              const AlbumsCard(
+                  albumImage: CustomImages.imageDefault,
+                  playlistName: "Playlist Name",
+                  playlistCreator: "Playlist Creator",
+                  itemLength: 2),
+              const Gap(40),
+
               // Artists you Follow
               // Shows the List of artists who are
               // followed by the user
