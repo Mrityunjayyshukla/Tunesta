@@ -168,9 +168,15 @@ class _LogInPageState extends State<LogInPage> {
   }
 }
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,7 +191,7 @@ class SignInPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(32.0),
             child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -236,9 +242,30 @@ class SignInPage extends StatelessWidget {
                           color: CustomColors.colorShade4,
                         ),
                         borderRadius: BorderRadius.circular(20)),
-                    child: const TextField(
-                      obscureText: true,
+                    child: TextField(
+                      obscureText: _showPassword ? false : true,
                       decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              if (_showPassword == true) {
+                                setState(() {
+                                  _showPassword = false;
+                                });
+                              } else {
+                                setState(() {
+                                  _showPassword = true;
+                                });
+                              }
+                            },
+                            icon: _showPassword
+                                ? Icon(
+                                    Icons.password,
+                                    color: Colors.grey[600],
+                                  )
+                                : Icon(
+                                    Icons.remove_red_eye,
+                                    color: Colors.grey[600],
+                                  )),
                         border: InputBorder.none,
                         hintText: "Password",
                         suffixIconColor: Colors.white,
@@ -246,7 +273,7 @@ class SignInPage extends StatelessWidget {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       keyboardAppearance: Brightness.dark,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   ),
                   const Gap(40),
@@ -290,6 +317,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -303,7 +331,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Center(
               child: Column(
                 children: [
@@ -375,9 +403,30 @@ class _SignUpPageState extends State<SignUpPage> {
                           color: CustomColors.colorShade4,
                         ),
                         borderRadius: BorderRadius.circular(20)),
-                    child: const TextField(
-                      obscureText: true,
+                    child: TextField(
+                      obscureText: _showPassword ? false : true,
                       decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              if (_showPassword == true) {
+                                setState(() {
+                                  _showPassword = false;
+                                });
+                              } else {
+                                setState(() {
+                                  _showPassword = true;
+                                });
+                              }
+                            },
+                            icon: _showPassword
+                                ? Icon(
+                                    Icons.password,
+                                    color: Colors.grey[600],
+                                  )
+                                : Icon(
+                                    Icons.remove_red_eye,
+                                    color: Colors.grey[600],
+                                  )),
                         border: InputBorder.none,
                         hintText: "Password",
                         suffixIconColor: Colors.white,
@@ -385,7 +434,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       keyboardAppearance: Brightness.dark,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   ),
                   const Gap(40),
