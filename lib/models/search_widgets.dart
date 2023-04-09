@@ -63,6 +63,7 @@ class _GenreTabsState extends State<GenreTabs> {
     return SizedBox(
       height: 180,
       child: GridView.builder(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 12),
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,

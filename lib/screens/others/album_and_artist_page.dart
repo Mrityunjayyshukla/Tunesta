@@ -329,27 +329,14 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                   ],
                 ),
                 const Gap(40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Popular",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: CustomColors.colorShade4),
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(8),
-                        child: const Text("More"),
-                      ),
-                    ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Popular",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const Gap(20),
@@ -360,27 +347,14 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                     gridNumber: 6,
                     gridInRow: 3),
                 const Gap(40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Albums",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: CustomColors.colorShade4),
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(8),
-                        child: const Text("More"),
-                      ),
-                    ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Albums",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const Gap(20),
@@ -390,27 +364,14 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                     playlistCreator: "Playlist Creator",
                     itemLength: 4),
                 const Gap(40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Singles",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: CustomColors.colorShade4),
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(8),
-                        child: const Text("More"),
-                      ),
-                    ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Text(
+                    "Singles",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const Gap(20),
