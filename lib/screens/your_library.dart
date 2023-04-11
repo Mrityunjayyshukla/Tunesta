@@ -4,6 +4,7 @@ import 'package:tunesta/models/custom_widgets.dart';
 import 'package:tunesta/models/library_widget.dart';
 import 'package:tunesta/screens/others/likedSongs.dart';
 import 'package:tunesta/utils/utilities.dart';
+import 'package:tunesta/utils/variables.dart';
 
 class YourLibrary extends StatelessWidget {
   const YourLibrary({super.key});
@@ -97,43 +98,52 @@ class YourLibrary extends StatelessWidget {
 
               // Created Playlists
               // Shows the Playlists created by the user
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  "Created Playlists",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Gap(25),
-              const AlbumsCard(
-                  albumImage: CustomImages.imageDefault,
-                  playlistName: "Playlist Name",
-                  playlistCreator: "Playlist Creator",
-                  itemLength: 8),
-              const Gap(40),
+
+              isPlaylistMade
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        "Created Playlists",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : const Gap(0),
+              isPlaylistMade ? const Gap(25) : const Gap(0),
+              isPlaylistMade
+                  ? const AlbumsCard(
+                      albumImage: CustomImages.imageDefault,
+                      playlistName: "Playlist Name",
+                      playlistCreator: "Playlist Creator",
+                      itemLength: 8)
+                  : const Gap(0),
+              isPlaylistMade ? const Gap(40) : const Gap(0),
 
               // Liked Albums
               // Shows the Albums user liked
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  "Liked Playlists",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Gap(25),
-              const AlbumsCard(
-                  albumImage: CustomImages.imageDefault,
-                  playlistName: "Playlist Name",
-                  playlistCreator: "Playlist Creator",
-                  itemLength: 2),
-              const Gap(40),
+              isLikedPlaylist
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        "Liked Playlists",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : const Gap(0),
+              isLikedPlaylist ? const Gap(25) : const Gap(0),
+              isLikedPlaylist
+                  ? const AlbumsCard(
+                      albumImage: CustomImages.imageDefault,
+                      playlistName: "Playlist Name",
+                      playlistCreator: "Playlist Creator",
+                      itemLength: 2)
+                  : const Gap(0),
+              isLikedPlaylist ? const Gap(40) : const Gap(0),
 
               // Artists you Follow
               // Shows the List of artists who are

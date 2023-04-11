@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, library_private_types_in_public_api
+// ignore_for_file: prefer_typing_uninitialized_variables, library_private_types_in_public_api, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -139,6 +139,55 @@ class _SearchPageState extends State<SearchPage> {
           .where((item) => item.toLowerCase().contains(value.toLowerCase()))
           .toList();
     });
+
+    @override
+    Widget build(BuildContext context, int index) {
+      return Container(
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Text(
+                  (index + 1).toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const Gap(20),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: const Image(
+                      image: AssetImage(
+                        CustomImages.imageDefault,
+                      ),
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    )),
+                const Gap(12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Music Name",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                    ),
+                    Text(
+                      "Artist Name",
+                      style: TextStyle(
+                          color: CustomColors.colorShade4, fontSize: 12),
+                    )
+                  ],
+                )
+              ],
+            ),
+            const Icon(Icons.more_vert)
+          ],
+        ),
+      );
+    }
   }
 
   void onClearText() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tunesta/utils/utilities.dart';
 import '../models/custom_widgets.dart';
+import 'package:tunesta/utils/variables.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //final bool isPlaylistMadeHome = true;
   late ScrollController _scrollController;
   double _scrollOffset = 0.0;
 
@@ -113,21 +115,25 @@ class _HomeScreenState extends State<HomeScreen> {
             const Gap(40),
 
             // User Created Playlists
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
-              child: Text("Created Playlists",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  )),
-            ),
-            const Gap(20),
-            const AlbumsCard(
-                albumImage: CustomImages.imageDefault,
-                playlistName: "Playlist Name",
-                playlistCreator: "Joseph Joestar",
-                itemLength: 8),
-            const Gap(40),
+            isPlaylistMade
+                ? const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text("Created Playlists",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        )),
+                  )
+                : const Gap(0),
+            isPlaylistMade ? const Gap(20) : const Gap(0),
+            isPlaylistMade
+                ? const AlbumsCard(
+                    albumImage: CustomImages.imageDefault,
+                    playlistName: "Playlist Name",
+                    playlistCreator: "Joseph Joestar",
+                    itemLength: 8)
+                : const Gap(0),
+            isPlaylistMade ? const Gap(40) : const Gap(0),
 
             // Top Charts
             // Playlisted of Most Trending Songs

@@ -24,23 +24,28 @@ class _ListeningHistoryState extends State<ListeningHistory> {
         padding: const EdgeInsets.all(16),
         physics: const BouncingScrollPhysics(),
         child: Column(
-          children: const [
-            Gap(40),
-            ListeningDate(
+          children: [
+            const Gap(25),
+            Text(
+              "You can see the list of songs you listened in last 7 days",
+              style: TextStyle(color: Colors.grey[400]),
+            ),
+            const Gap(40),
+            const ListeningDate(
               date: "Today",
               itemCount: 2,
             ),
-            Gap(40),
-            ListeningDate(
+            const Gap(40),
+            const ListeningDate(
               date: "Yesterday",
               itemCount: 4,
             ),
-            Gap(40),
-            ListeningDate(
+            const Gap(40),
+            const ListeningDate(
               date: "Apr 7, 2023",
               itemCount: 5,
             ),
-            Gap(40),
+            const Gap(40),
           ],
         ),
       ),
