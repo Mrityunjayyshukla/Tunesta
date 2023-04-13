@@ -52,19 +52,6 @@ class AccountPage extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              const Gap(15),
-
-              // Manage your Account option
-              // Here, User can change account related settings
-              Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(width: 2, color: Colors.white)),
-                  child: const Text(
-                    "Manage your account",
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  )),
               const Gap(50),
 
               // Settings for the App

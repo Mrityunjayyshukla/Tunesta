@@ -98,7 +98,6 @@ class YourLibrary extends StatelessWidget {
 
               // Created Playlists
               // Shows the Playlists created by the user
-
               isPlaylistMade
                   ? const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -110,16 +109,16 @@ class YourLibrary extends StatelessWidget {
                         ),
                       ),
                     )
-                  : const Gap(0),
-              isPlaylistMade ? const Gap(25) : const Gap(0),
+                  : const SizedBox.shrink(),
+              isPlaylistMade ? const Gap(25) : const SizedBox.shrink(),
               isPlaylistMade
                   ? const AlbumsCard(
                       albumImage: CustomImages.imageDefault,
                       playlistName: "Playlist Name",
                       playlistCreator: "Playlist Creator",
                       itemLength: 8)
-                  : const Gap(0),
-              isPlaylistMade ? const Gap(40) : const Gap(0),
+                  : const SizedBox.shrink(),
+              isPlaylistMade ? const Gap(40) : const SizedBox.shrink(),
 
               // Liked Albums
               // Shows the Albums user liked
@@ -134,36 +133,40 @@ class YourLibrary extends StatelessWidget {
                         ),
                       ),
                     )
-                  : const Gap(0),
-              isLikedPlaylist ? const Gap(25) : const Gap(0),
+                  : const SizedBox.shrink(),
+              isLikedPlaylist ? const Gap(25) : const SizedBox.shrink(),
               isLikedPlaylist
                   ? const AlbumsCard(
                       albumImage: CustomImages.imageDefault,
                       playlistName: "Playlist Name",
                       playlistCreator: "Playlist Creator",
                       itemLength: 2)
-                  : const Gap(0),
-              isLikedPlaylist ? const Gap(40) : const Gap(0),
+                  : const SizedBox.shrink(),
+              isLikedPlaylist ? const Gap(40) : const SizedBox.shrink(),
 
               // Artists you Follow
               // Shows the List of artists who are
               // followed by the user
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  "Artists you follow",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Gap(25),
-              const ArtistsList(
-                  artistImage: CustomImages.imageDefault,
-                  artistName: "Artist Name",
-                  itemLength: 6),
-              const Gap(40),
+              isFollowingArtist
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        "Artists you follow",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+              isFollowingArtist ? const Gap(25) : const SizedBox.shrink(),
+              isFollowingArtist
+                  ? const ArtistsList(
+                      artistImage: CustomImages.imageDefault,
+                      artistName: "Artist Name",
+                      itemLength: 6)
+                  : const SizedBox.shrink(),
+              isFollowingArtist ? const Gap(40) : const SizedBox.shrink(),
 
               // Top 5 Most Played
               // The App will keep track of 5 most played music
