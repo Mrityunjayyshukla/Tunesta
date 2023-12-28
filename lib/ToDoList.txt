@@ -9,3 +9,4 @@ Setting the backgroundColor to a Single Color (Done)
 Empty text if no element and element if there are
 Artist Image in the Artist Page (Done)
 Set the dates in a way that ListeningHistory dates update
+Fixing up minor bugs
